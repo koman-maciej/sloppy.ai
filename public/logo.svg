@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Card border with rounded corners -->
+  <rect x="10" y="10" width="180" height="180" rx="30" ry="30"
+        stroke="#5c4a1e" stroke-width="5" fill="#f5efe6"/>
+
+  <!-- Sand at the bottom -->
+  <ellipse cx="100" cy="175" rx="75" ry="12" fill="#e8d9b8" opacity="0.7"/>
+
+  <!-- Water wave lines at top -->
+  <path d="M20 48 Q50 38 80 48 Q110 58 140 48 Q165 40 180 48"
+        stroke="#5c4a1e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M10 56 Q40 46 70 56 Q100 66 130 56 Q155 48 180 56"
+        stroke="#5c4a1e" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+  <!-- Seaweed / twig -->
+  <path d="M28 45 Q22 65 30 85 Q36 100 28 115"
+        stroke="#5c4a1e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M30 70 Q18 62 20 52" stroke="#5c4a1e" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Turtle body -->
+  <ellipse cx="105" cy="108" rx="36" ry="28" fill="#6b7a2a"/>
+
+  <!-- Shell hexagon pattern -->
+  <polygon points="105,88 116,94 116,106 105,112 94,106 94,94"
+           fill="#5a6822" stroke="#6b7a2a" stroke-width="1"/>
+  <polygon points="105,101 112,105 112,113 105,117 98,113 98,105"
+           fill="#5a6822" stroke="#6b7a2a" stroke-width="1"/>
+  <polygon points="116,94 124,98 124,108 116,112 116,106 116,94"
+           fill="#5a6822" stroke="#6b7a2a" stroke-width="1" opacity="0.7"/>
+  <polygon points="94,94 94,106 86,108 86,98 94,94"
+           fill="#5a6822" stroke="#6b7a2a" stroke-width="1" opacity="0.7"/>
+
+  <!-- Head -->
+  <ellipse cx="105" cy="82" rx="11" ry="10" fill="#6b7a2a"/>
+
+  <!-- Front flippers -->
+  <ellipse cx="138" cy="95" rx="16" ry="9" fill="#6b7a2a" transform="rotate(-30 138 95)"/>
+  <ellipse cx="72" cy="95" rx="16" ry="9" fill="#6b7a2a" transform="rotate(30 72 95)"/>
+
+  <!-- Back flippers -->
+  <ellipse cx="132" cy="128" rx="14" ry="8" fill="#6b7a2a" transform="rotate(35 132 128)"/>
+  <ellipse cx="78" cy="128" rx="14" ry="8" fill="#6b7a2a" transform="rotate(-35 78 128)"/>
+</svg>
