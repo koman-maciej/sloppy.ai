@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sloppy.ai</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="login-screen" class="screen">
+    <div class="login-card">
+      <div class="logo">
+        <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
+      </div>
+      <p class="tagline">Your AI assistant, casually smart.</p>
+
+      <form id="login-form" autocomplete="off">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required />
+        </div>
+        <div id="login-error" class="error-msg hidden"></div>
+        <button type="submit" class="btn-primary" id="login-btn">Sign In</button>
+      </form>
+
+      <p class="register-hint">
+        No account? <a href="#" id="register-link">Register here</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== CHAT SCREEN ===== -->
+  <div id="chat-screen" class="screen hidden">
+    <header class="chat-header">
+      <div class="logo small">
+        <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
+      </div>
+      <div class="header-right">
+        <span id="chat-username" class="chat-user"></span>
+        <button class="btn-logout" id="logout-btn">Sign out</button>
+      </div>
+    </header>
+
+    <main class="chat-main">
+      <div id="messages" class="messages-container">
+        <div class="welcome-msg">
+          <p>👋 Cześć! Jestem <strong>sloppy.ai</strong>. Napisz coś, a odpowiem!</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="chat-footer">
+      <form id="chat-form" class="chat-input-row">
+        <textarea
+          id="chat-input"
+          placeholder="Napisz wiadomość..."
+          rows="1"
+          required
+        ></textarea>
+        <button type="submit" id="send-btn" class="btn-send" aria-label="Send">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
