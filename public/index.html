@@ -36,10 +36,81 @@
     </div>
   </div>
 
+  <!-- ===== REGISTER SCREEN ===== -->
+  <div id="register-screen" class="screen hidden">
+    <div class="login-card register-card">
+      <img src="/logo.svg" alt="sloppy.ai logo" class="brand-logo" />
+      <div class="logo">
+        <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
+      </div>
+      <p class="tagline">Utwórz swoje konto</p>
+
+      <form id="register-form" autocomplete="off" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="reg-firstname">Imię</label>
+            <input type="text" id="reg-firstname" placeholder="Jan" required
+                   pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
+            <span class="field-hint">Min. 2 litery, tylko litery</span>
+          </div>
+          <div class="field">
+            <label for="reg-lastname">Nazwisko</label>
+            <input type="text" id="reg-lastname" placeholder="Kowalski" required
+                   pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
+            <span class="field-hint">Min. 2 litery, tylko litery</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" placeholder="jan.kowalski@email.com" required />
+          <span class="field-hint">Prawidłowy adres email</span>
+        </div>
+
+        <div class="field">
+          <label for="reg-birthdate">Data urodzenia</label>
+          <input type="date" id="reg-birthdate" required />
+          <span class="field-hint">Podaj prawidłową datę</span>
+        </div>
+
+        <div class="field">
+          <label for="reg-username">Login</label>
+          <input type="text" id="reg-username" placeholder="jan_kowalski" required
+                 pattern="^[a-zA-Z0-9_]{3,32}$" />
+          <span class="field-hint">3–32 znaki: litery, cyfry, podkreślnik</span>
+        </div>
+
+        <div class="field">
+          <label for="reg-password">Hasło</label>
+          <input type="password" id="reg-password" placeholder="Min. 8 znaków" required
+                 minlength="8" />
+          <span class="field-hint">Min. 8 znaków</span>
+        </div>
+
+        <div class="field">
+          <label for="reg-password2">Powtórz hasło</label>
+          <input type="password" id="reg-password2" placeholder="Powtórz hasło" required />
+        </div>
+
+        <div id="register-error" class="error-msg hidden"></div>
+        <button type="submit" class="btn-primary" id="register-btn">Zarejestruj się</button>
+      </form>
+
+      <p class="register-hint">
+        Masz już konto? <a href="#" id="back-to-login">Zaloguj się</a>
+      </p>
+    </div>
+  </div>
+
   <!-- ===== CHAT SCREEN ===== -->
   <div id="chat-screen" class="screen hidden">
     <header class="chat-header">
       <div class="header-brand">
+        <button class="btn-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
         <img src="/logo.svg" alt="sloppy.ai logo" class="brand-logo-header" />
         <div class="logo small">
           <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
@@ -51,30 +122,52 @@
       </div>
     </header>
 
-    <main class="chat-main">
-      <div id="messages" class="messages-container">
-        <div class="welcome-msg">
-          <p>👋 Cześć! Jestem <strong>sloppy.ai</strong>. Napisz coś, a odpowiem!</p>
-        </div>
-      </div>
-    </main>
+    <div class="chat-body">
 
-    <footer class="chat-footer">
-      <form id="chat-form" class="chat-input-row">
-        <textarea
-          id="chat-input"
-          placeholder="Napisz wiadomość..."
-          rows="1"
-          required
-        ></textarea>
-        <button type="submit" id="send-btn" class="btn-send" aria-label="Send">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </form>
-    </footer>
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <button class="btn-new-chat" id="new-chat-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Nowy czat
+          </button>
+        </div>
+        <nav class="sidebar-nav" id="conversations-list">
+          <!-- filled by JS -->
+        </nav>
+      </aside>
+
+      <!-- Main chat area -->
+      <div class="chat-main-wrap">
+        <main class="chat-main">
+          <div id="messages" class="messages-container">
+            <div class="welcome-msg" id="welcome-msg">
+              <p>👋 Cześć! Jestem <strong>sloppy.ai</strong>.<br/>Kliknij <em>Nowy czat</em>, żeby zacząć.</p>
+            </div>
+          </div>
+        </main>
+
+        <footer class="chat-footer">
+          <form id="chat-form" class="chat-input-row">
+            <textarea
+              id="chat-input"
+              placeholder="Napisz wiadomość..."
+              rows="1"
+              required
+            ></textarea>
+            <button type="submit" id="send-btn" class="btn-send" aria-label="Send" disabled>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </footer>
+      </div>
+
+    </div>
   </div>
 
   <script src="/app.js"></script>

@@ -3,8 +3,9 @@ const session = require('express-session');
 const path = require('path');
 const mongoose = require('mongoose');
 
-const authRoutes = require('./routes/auth');
-const chatRoutes = require('./routes/chat');
+const authRoutes          = require('./routes/auth');
+const chatRoutes          = require('./routes/chat');
+const conversationRoutes  = require('./routes/conversations');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ app.use(session({
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/conversations', conversationRoutes);
 
 // Catch-all: serve frontend
 app.get('*', (req, res) => {
