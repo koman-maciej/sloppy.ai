@@ -169,6 +169,39 @@ html, body {
 }
 .register-hint a:hover { text-decoration: underline; }
 
+/* Register card — slightly taller, same width */
+.register-card {
+  max-width: 440px;
+  padding: 2rem 2.8rem;
+}
+
+/* Two-column row for first/last name */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+/* Inline hint below input */
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Validation states */
+input:invalid:not(:placeholder-shown):not(:focus) {
+  border-color: #ff6b6b;
+}
+input:valid:not(:placeholder-shown) {
+  border-color: #4caf7d;
+}
+
+/* Date input color fix */
+input[type="date"] {
+  color-scheme: dark;
+}
+
 /* ===========================
    Chat Screen
    =========================== */
@@ -180,10 +213,33 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 1.6rem;
+  padding: 0.9rem 1.2rem;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  z-index: 10;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+}
+.btn-sidebar-toggle:hover {
+  color: var(--text);
+  background: var(--bg-input);
 }
 
 .header-right {
@@ -210,6 +266,116 @@ html, body {
 .btn-logout:hover {
   color: var(--text);
   border-color: var(--accent);
+}
+
+/* ── Body = sidebar + main ── */
+.chat-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===========================
+   Sidebar
+   =========================== */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.22s ease, opacity 0.22s ease;
+}
+.sidebar.collapsed {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-top {
+  padding: 0.9rem 0.8rem 0.6rem;
+  flex-shrink: 0;
+}
+
+.btn-new-chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-new-chat:hover { background: var(--accent-hover); }
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.4rem 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.conv-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  transition: background 0.15s, color 0.15s;
+  min-width: 0;
+}
+.conv-item:hover {
+  background: var(--bg-input);
+  color: var(--text);
+}
+.conv-item.active {
+  background: rgba(124,111,247,0.15);
+  color: var(--text);
+}
+.conv-item-title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.conv-item-delete {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: color 0.15s;
+  line-height: 1;
+}
+.conv-item:hover .conv-item-delete { color: var(--text-muted); }
+.conv-item-delete:hover { color: #ff6b6b !important; }
+
+/* ===========================
+   Main chat area
+   =========================== */
+.chat-main-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Messages */
@@ -241,6 +407,7 @@ html, body {
   padding: 2rem 0;
 }
 .welcome-msg strong { color: var(--accent); }
+.welcome-msg em { color: var(--text); font-style: normal; font-weight: 600; }
 
 /* Bubble rows */
 .msg-row {
