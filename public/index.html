@@ -38,67 +38,79 @@
 
   <!-- ===== REGISTER SCREEN ===== -->
   <div id="register-screen" class="screen hidden">
-    <div class="login-card register-card">
-      <img src="/logo.svg" alt="sloppy.ai logo" class="brand-logo" />
-      <div class="logo">
-        <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
+    <div class="register-layout">
+
+      <!-- Lewa kolumna: formularz ze scrollem -->
+      <div class="register-form-col">
+        <div class="register-card">
+          <div class="logo">
+            <span class="logo-sloppy">sloppy</span><span class="logo-dot">.</span><span class="logo-ai">ai</span>
+          </div>
+          <p class="tagline">Utwórz swoje konto</p>
+
+          <form id="register-form" autocomplete="off" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="reg-firstname">Imię</label>
+                <input type="text" id="reg-firstname" placeholder="Jan" required
+                       pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
+                <span class="field-hint">Min. 2 litery, tylko litery</span>
+              </div>
+              <div class="field">
+                <label for="reg-lastname">Nazwisko</label>
+                <input type="text" id="reg-lastname" placeholder="Kowalski" required
+                       pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
+                <span class="field-hint">Min. 2 litery, tylko litery</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="reg-email">Email</label>
+              <input type="email" id="reg-email" placeholder="jan.kowalski@email.com" required />
+              <span class="field-hint">Prawidłowy adres email</span>
+            </div>
+
+            <div class="field">
+              <label for="reg-birthdate">Data urodzenia</label>
+              <input type="date" id="reg-birthdate" required />
+              <span class="field-hint">Podaj prawidłową datę</span>
+            </div>
+
+            <div class="field">
+              <label for="reg-username">Login</label>
+              <input type="text" id="reg-username" placeholder="jan_kowalski" required
+                     pattern="^[a-zA-Z0-9_]{3,32}$" />
+              <span class="field-hint">3–32 znaki: litery, cyfry, podkreślnik</span>
+            </div>
+
+            <div class="field">
+              <label for="reg-password">Hasło</label>
+              <input type="password" id="reg-password" placeholder="Min. 8 znaków" required
+                     minlength="8" />
+              <span class="field-hint">Min. 8 znaków</span>
+            </div>
+
+            <div class="field">
+              <label for="reg-password2">Powtórz hasło</label>
+              <input type="password" id="reg-password2" placeholder="Powtórz hasło" required />
+            </div>
+
+            <div id="register-error" class="error-msg hidden"></div>
+            <button type="submit" class="btn-primary" id="register-btn">Zarejestruj się</button>
+          </form>
+
+          <p class="register-hint">
+            Masz już konto? <a href="#" id="back-to-login">Zaloguj się</a>
+          </p>
+        </div>
       </div>
-      <p class="tagline">Utwórz swoje konto</p>
 
-      <form id="register-form" autocomplete="off" novalidate>
-        <div class="field-row">
-          <div class="field">
-            <label for="reg-firstname">Imię</label>
-            <input type="text" id="reg-firstname" placeholder="Jan" required
-                   pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
-            <span class="field-hint">Min. 2 litery, tylko litery</span>
-          </div>
-          <div class="field">
-            <label for="reg-lastname">Nazwisko</label>
-            <input type="text" id="reg-lastname" placeholder="Kowalski" required
-                   pattern="^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$" />
-            <span class="field-hint">Min. 2 litery, tylko litery</span>
-          </div>
-        </div>
+      <!-- Prawa kolumna: logo -->
+      <div class="register-logo-col">
+        <img src="/logo.svg" alt="sloppy.ai logo" class="register-big-logo" />
+        <p class="register-logo-tagline">Your AI assistant,<br/>casually smart.</p>
+      </div>
 
-        <div class="field">
-          <label for="reg-email">Email</label>
-          <input type="email" id="reg-email" placeholder="jan.kowalski@email.com" required />
-          <span class="field-hint">Prawidłowy adres email</span>
-        </div>
-
-        <div class="field">
-          <label for="reg-birthdate">Data urodzenia</label>
-          <input type="date" id="reg-birthdate" required />
-          <span class="field-hint">Podaj prawidłową datę</span>
-        </div>
-
-        <div class="field">
-          <label for="reg-username">Login</label>
-          <input type="text" id="reg-username" placeholder="jan_kowalski" required
-                 pattern="^[a-zA-Z0-9_]{3,32}$" />
-          <span class="field-hint">3–32 znaki: litery, cyfry, podkreślnik</span>
-        </div>
-
-        <div class="field">
-          <label for="reg-password">Hasło</label>
-          <input type="password" id="reg-password" placeholder="Min. 8 znaków" required
-                 minlength="8" />
-          <span class="field-hint">Min. 8 znaków</span>
-        </div>
-
-        <div class="field">
-          <label for="reg-password2">Powtórz hasło</label>
-          <input type="password" id="reg-password2" placeholder="Powtórz hasło" required />
-        </div>
-
-        <div id="register-error" class="error-msg hidden"></div>
-        <button type="submit" class="btn-primary" id="register-btn">Zarejestruj się</button>
-      </form>
-
-      <p class="register-hint">
-        Masz już konto? <a href="#" id="back-to-login">Zaloguj się</a>
-      </p>
     </div>
   </div>
 
