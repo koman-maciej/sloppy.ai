@@ -8,16 +8,16 @@
 }
 
 :root {
-  --bg: #0f0f11;
-  --bg-card: #18181b;
-  --bg-input: #232329;
-  --border: #2e2e36;
-  --accent: #7c6ff7;
-  --accent-hover: #6a5ee0;
+  --bg: #050e08;
+  --bg-card: #080f0b;
+  --bg-input: #0c1a10;
+  --border: #122018;
+  --accent: #14452f;
+  --accent-hover: #1a5a3d;
   --text: #f0f0f5;
-  --text-muted: #8888a0;
-  --user-bubble: #7c6ff7;
-  --bot-bubble: #232329;
+  --text-muted: #7a9985;
+  --user-bubble: #14452f;
+  --bot-bubble: #0c1a10;
   --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --radius: 14px;
 }
@@ -52,7 +52,7 @@ html, body {
   width: 96px;
   height: 96px;
   margin: 0 auto 1rem;
-  filter: drop-shadow(0 4px 16px rgba(124,111,247,0.18));
+  filter: drop-shadow(0 4px 16px rgba(20,69,47,0.45));
 }
 
 /* Brand logo image — chat header */
@@ -82,7 +82,7 @@ html, body {
 #login-screen {
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at 60% 40%, #1e1a3a 0%, #0f0f11 70%);
+  background: radial-gradient(ellipse at 60% 40%, #0f2e1e 0%, #050e08 70%);
 }
 
 .login-card {
@@ -169,10 +169,74 @@ html, body {
 }
 .register-hint a:hover { text-decoration: underline; }
 
-/* Register card — slightly taller, same width */
+/* ===========================
+   Register Screen
+   =========================== */
+#register-screen {
+  background: radial-gradient(ellipse at 60% 40%, #0f2e1e 0%, #050e08 70%);
+  overflow-y: auto;          /* scrollbar gdy za mało miejsca */
+}
+
+/* Dwukolumnowy wrapper */
+.register-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  align-items: stretch;
+}
+
+/* Lewa kolumna: formularz */
+.register-form-col {
+  flex: 0 0 480px;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
 .register-card {
-  max-width: 440px;
-  padding: 2rem 2.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.2rem 2.4rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* Prawa kolumna: logo */
+.register-logo-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.register-big-logo {
+  width: clamp(180px, 30vw, 320px);
+  height: auto;
+  filter: drop-shadow(0 8px 32px rgba(20,69,47,0.5));
+}
+
+.register-logo-tagline {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Na wąskich ekranach: kolumny w pionie */
+@media (max-width: 700px) {
+  .register-layout  { flex-direction: column; }
+  .register-form-col { flex: none; width: 100%; padding: 1.5rem 1rem; }
+  .register-logo-col { padding: 1.5rem 1rem 0; }
+  .register-big-logo { width: 120px; }
 }
 
 /* Two-column row for first/last name */
@@ -344,7 +408,7 @@ input[type="date"] {
   color: var(--text);
 }
 .conv-item.active {
-  background: rgba(124,111,247,0.15);
+  background: rgba(20,69,47,0.4);
   color: var(--text);
 }
 .conv-item-title {
@@ -430,7 +494,7 @@ input[type="date"] {
   font-weight: 700;
 }
 .avatar.user { background: var(--accent); color: #fff; }
-.avatar.bot  { background: #2e2e40; color: var(--accent); font-size: 1rem; }
+.avatar.bot  { background: #0c1a10; color: var(--accent); font-size: 1rem; }
 
 .bubble {
   max-width: 72%;
