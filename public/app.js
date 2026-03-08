@@ -353,21 +353,7 @@ function appendMessage(role, text) {
   const bubble = document.createElement('div');
   bubble.className = `bubble ${role}`;
 
-  if (role === 'bot') {
-    const echoMatch = text.match(/^(.*?")(.*?)(",.*)$/s);
-    if (echoMatch) {
-      bubble.appendChild(document.createTextNode(echoMatch[1]));
-      const em = document.createElement('em');
-      em.className = 'echo-text';
-      em.textContent = echoMatch[2];
-      bubble.appendChild(em);
-      bubble.appendChild(document.createTextNode(echoMatch[3]));
-    } else {
-      bubble.textContent = text;
-    }
-  } else {
-    bubble.textContent = text;
-  }
+  bubble.textContent = text;
 
   row.appendChild(avatar);
   row.appendChild(bubble);

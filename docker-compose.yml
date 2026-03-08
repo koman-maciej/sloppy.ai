@@ -24,6 +24,10 @@ services:
       PORT: 3000
       MONGO_URI: mongodb://mongo:27017/sloppy-ai
       SESSION_SECRET: "${SESSION_SECRET}"
+      CHATBOX_EMAIL: "${CHATBOX_EMAIL}"
+      CHATBOX_PASSWORD: "${CHATBOX_PASSWORD}"
+      CHATBOX_MODEL_ID: "${CHATBOX_MODEL_ID}"
+      CHATBOX_ROOM_ID: "${CHATBOX_ROOM_ID}"
     depends_on:
       - mongo
     networks:

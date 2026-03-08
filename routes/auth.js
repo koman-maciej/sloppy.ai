@@ -5,13 +5,17 @@ const User = require('../models/User');
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
   const { username, password, firstName, lastName, email, birthDate } = req.body;
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required.' });
+  if (!username || !password || !birthDate) {
+    return res.status(400).json({ error: 'Username, password and date of birth are required.' });
+  }
+  const parsedDate = new Date(birthDate);
+  if (isNaN(parsedDate.getTime())) {
+    return res.status(400).json({ error: 'Invalid date of birth.' });
   }
   try {
     const existing = await User.findOne({ username });
     if (existing) return res.status(409).json({ error: 'Użytkownik o tym loginie już istnieje.' });
-    const user = new User({ username, password, firstName, lastName, email, birthDate });
+    const user = new User({ username, password, firstName, lastName, email, birthDate: parsedDate });
     await user.save();
     res.status(201).json({ message: 'User created.' });
   } catch (err) {
