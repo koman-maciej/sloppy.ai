@@ -133,7 +133,7 @@ function validateRegisterForm() {
 
   const nameRe     = /^[A-Za-zÀ-ÖØ-öø-żŁłĄąĆćĘęŃńÓóŚśŹźŻż]{2,}$/;
   const emailRe    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const usernameRe = /^[a-zA-Z0-9_]{3,32}$/;
+  const usernameRe = /^[a-zA-Z0-9_.]{3,32}$/;
 
   if (!nameRe.test(firstName)) return 'Imię musi mieć min. 2 litery i zawierać tylko litery.';
   if (!nameRe.test(lastName))  return 'Nazwisko musi mieć min. 2 litery i zawierać tylko litery.';
@@ -141,7 +141,7 @@ function validateRegisterForm() {
   if (!birthDate)              return 'Podaj datę urodzenia.';
   const parsed = new Date(birthDate);
   if (isNaN(parsed.getTime())) return 'Podaj prawidłową datę urodzenia.';
-  if (!usernameRe.test(username)) return 'Login: 3–32 znaki, tylko litery, cyfry i podkreślnik.';
+  if (!usernameRe.test(username)) return 'Login: 3–32 znaki, tylko litery, cyfry, podkreślnik i kropka.';
   if (password.length < 8)     return 'Hasło musi mieć co najmniej 8 znaków.';
   if (password !== password2)  return 'Hasła nie są identyczne.';
   return null;
